@@ -1,25 +1,20 @@
 server:
-  port: 8080
+  port: "${SERVER_PORT:8083}"
 spring:
   application:
     name: "ms-reports"
   devtools:
     add-properties: false
-  h2:
-    console:
-      enabled: true
-      path: "/h2"
+    restart:
+      enabled: false
+    livereload:
+      enabled: false
   profiles:
     include: null
-entrypoint:
-  sqs:
-    region: "us-east-1"
-    endpoint: "http://localhost:4566"
-    queueUrl: "http://localhost:4566/000000000000/sample"
-    waitTimeSeconds: 20
-    maxNumberOfMessages: 10
-    visibilityTimeoutSeconds: 10
-    numberOfThreads: 1
+aws:
+  region: "us-east-1"
+  dynamodb:
+    endpoint: "http://localhost:8000"
 management:
   endpoints:
     web:
@@ -30,7 +25,12 @@ management:
       probes:
         enabled: true
 cors:
-  allowed-origins: "http://localhost:4200,http://localhost:8080"
-aws:
-  dynamodb:
-    endpoint: "http://localhost:8000"
+  allowed-origins: "*"
+entrypoint:
+  sqs:
+    region: "${SQS_REGION:us-east-1}"
+    queueUrl: "${REPORT_QUEUE_URL:https://sqs.us-east-1.amazonaws.com/794490944018/loan-report-queue}"
+    waitTimeSeconds: 20
+    maxNumberOfMessages: 10
+    visibilityTimeoutSeconds: 10
+    numberOfThreads: 1
