@@ -26,6 +26,10 @@ management:
         enabled: true
 cors:
   allowed-origins: "*"
+routes:
+  report:
+    paths:
+      reports: "/api/v1/report"
 entrypoint:
   sqs:
     region: "${SQS_REGION:us-east-1}"

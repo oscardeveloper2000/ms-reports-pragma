@@ -1,8 +1,8 @@
-package co.com.bancolombia.model.report.gateways;
+package co.com.bancolombia.usecase.report;
 
 import co.com.bancolombia.model.report.Report;
 import reactor.core.publisher.Mono;
 
-public interface ReportRepository {
+public interface IGetReportUseCase {
     Mono<Report> getReport();
 }

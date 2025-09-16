@@ -15,10 +15,10 @@ import software.amazon.awssdk.enhanced.dynamodb.model.QueryEnhancedRequest;
 import java.util.List;
 
 @Repository
-public class DynamoDBTemplateAdapter extends TemplateAdapterOperations<ApprovedLoan, String, ApprovedLoanEntity>
+public class DynamoDBApprovedLoanAdapter extends TemplateAdapterOperations<ApprovedLoan, String, ApprovedLoanEntity>
         implements ApprovedLoanRepository {
 
-    public DynamoDBTemplateAdapter(DynamoDbEnhancedAsyncClient connectionFactory, ObjectMapper mapper) {
+    public DynamoDBApprovedLoanAdapter(DynamoDbEnhancedAsyncClient connectionFactory, ObjectMapper mapper) {
         super(connectionFactory, mapper, d -> mapper.map(d, ApprovedLoan.class), "reports");
     }
 

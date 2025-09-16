@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
-public class ApprovedLoanUseCase implements SaveApprovedLoan {
+public class ApprovedLoanUseCase implements ISaveApprovedLoanUseCase {
     private final ApprovedLoanRepository approvedLoanRepository;
     private final LoggerPort logger;
 

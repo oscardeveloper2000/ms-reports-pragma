@@ -2,7 +2,7 @@ package co.com.bancolombia.sqs.listener;
 
 import co.com.bancolombia.model.report.ApprovedLoan;
 import co.com.bancolombia.model.report.commom.LoggerPort;
-import co.com.bancolombia.usecase.report.SaveApprovedLoan;
+import co.com.bancolombia.usecase.report.ISaveApprovedLoanUseCase;
 import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.util.function.Function;
 @RequiredArgsConstructor
 public class SQSProcessor implements Function<Message, Mono<Void>> {
     // private final MyUseCase myUseCase;
-    private final SaveApprovedLoan approvedLoanUseCase;
+    private final ISaveApprovedLoanUseCase approvedLoanUseCase;
     private final LoggerPort logger;
     private static final Gson gson = new Gson();
 
