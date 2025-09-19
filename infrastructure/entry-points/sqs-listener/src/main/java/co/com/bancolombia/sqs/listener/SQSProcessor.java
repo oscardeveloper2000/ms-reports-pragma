@@ -23,10 +23,9 @@ public class SQSProcessor implements Function<Message, Mono<Void>> {
 public Mono<Void> apply(Message message) {
     logger.info("SQSProcessor - Message received: {}", message.body());
     try {
-        // Primer paso: deserializar el string JSON escapado
+
         String jsonString = gson.fromJson(message.body(), String.class);
 
-        // Segundo paso: deserializar el JSON real al objeto
         ApprovedLoan approvedLoan = gson.fromJson(jsonString, ApprovedLoan.class);
 
         logger.info("SQSProcessor - Message mapped: {}", gson.toJson(approvedLoan));
